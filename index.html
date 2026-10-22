@@ -58,7 +58,7 @@ footer{font-size:12px;color:#96aebb;border-top:1px solid var(--line);margin-top:
 <h2>Experiment controls</h2><div class="small muted">Modify a configuration and watch its unit-distance graph update instantly.</div>
 <div class="section-label">Starting arrangement</div>
 <div class="field"><label class="field-head" for="preset">Geometry</label>
-<select id="preset"><option value="grid1">Square grid · nearest neighbors</option><option value="grid2">Rescaled grid · diagonals (√2)</option><option value="grid5" selected>Rescaled grid · knight moves (√5)</option><option value="grid10">Rescaled grid · √10</option><option value="triangle">Triangular lattice</option><option value="ring">Regular polygon (unit sides)</option><option value="random">Random cloud</option></select></div>
+<select id="preset"><option value="grid1">Square grid · nearest neighbors</option><option value="grid2">Rescaled grid · diagonals (√2)</option><option value="grid5">Rescaled grid · knight moves (√5)</option><option value="grid10">Rescaled grid · √10</option><option value="triangle">Triangular lattice</option><option value="ring">Regular polygon (unit sides)</option><option value="random" selected>Random cloud</option></select></div>
 <div class="field"><label class="field-head" for="count"><span>Number of points</span><output id="countOut">100</output></label><input id="count" type="range" min="9" max="196" value="100" step="1"></div>
 <div class="field"><label class="field-head" for="tolerance"><span>Visual matching tolerance</span><output id="tolOut">± 0.020</output></label><input id="tolerance" type="range" min="0.002" max="0.140" value="0.020" step="0.002"><div class="note">The theorem concerns <strong>exact</strong> distance 1. A small tolerance is used here so dragged points remain visually meaningful.</div></div>
 <div class="group"><button class="btn primary" id="reset">↺ New arrangement</button><button class="btn" id="optimize">▶ Explore locally</button><button class="btn" id="remove">− Remove point</button><button class="btn" id="add">＋ Add point</button></div>
@@ -78,7 +78,7 @@ footer{font-size:12px;color:#96aebb;border-top:1px solid var(--line);margin-top:
 'use strict';
 const $=id=>document.getElementById(id);
 const canvas=$('plane'),ctx=canvas.getContext('2d');
-const state={pts:[],preset:'grid5',n:100,tol:.02,cam:{x:0,y:0},scale:60,sel:-1,drag:-1,tool:'drag',running:false,showEdges:true,showGrid:true};
+const state={pts:[],preset:'random',n:100,tol:.02,cam:{x:0,y:0},scale:60,sel:-1,drag:-1,tool:'drag',running:false,showEdges:true,showGrid:true};
 let W=700,H=560,dpr=1,raf=0,steps=0;
 const presets=[['grid1','Square (1)'],['grid2','Diagonal (√2)'],['grid5','Knight (√5)'],['grid10','√10 lattice'],['triangle','Triangular'],['ring','Unit polygon'],['random','Random']];
 function random(seed){let x=seed>>>0;return ()=>{x=(Math.imul(x,1664525)+1013904223)>>>0;return x/4294967296;};}
